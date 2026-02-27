@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Campus Connector – Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: url('https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .glass-container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-radius: 15px;
+      padding: 40px 30px;
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .glass-container h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .glass-container p {
+      font-size: 15px;
+      margin-bottom: 30px;
+      color: #f1f1f1;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.4);
+      color: #000;
+    }
+
+    .btn-danger {
+      background: rgba(231, 76, 60, 0.7);
+    }
+
+    .btn-danger:hover {
+      background: rgba(231, 76, 60, 1);
+      color: white;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .footer {
+      margin-top: 25px;
+      font-size: 12px;
+      color: #ccc;
+    }
+
+    .userid-span {
+      color: #ffeb3b;
+      font-weight: bold;
+    }
+
+    @media (max-width: 500px) {
+      .glass-container h1 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glass-container">
+    <h1><i class="fas fa-graduation-cap"></i>Campus Connect</h1>
+    <p id="welcome">Access your personalized dashboard</p>
+
+    <a id="loginBtn" class="btn" href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+    <a id="dashBtn" class="btn" href="Dashboard.html" style="display:none;"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+    <button id="logoutBtn" class="btn btn-danger" style="display:none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+
+    <div class="footer">
+      &copy; 2025 Macet Campus Connect
+    </div>
+  </div>
+
+  <script>
+    const loginBtn  = document.getElementById('loginBtn');
+    const dashBtn   = document.getElementById('dashBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const welcome   = document.getElementById('welcome');
+
+    function refreshHomePage() {
+      const userid = localStorage.getItem('userid');
+      if (userid) {
+        welcome.innerHTML = `Welcome back, <span class="userid-span">${userid}</span>!`;
+        loginBtn.style.display  = 'none';
+        dashBtn.style.display   = 'block';
+        logoutBtn.style.display = 'block';
+      } else {
+        welcome.innerHTML = 'Access your personalized dashboard';
+        loginBtn.style.display  = 'block';
+        dashBtn.style.display   = 'none';
+        logoutBtn.style.display = 'none';
+      }
+    }
+
+    logoutBtn.onclick = () => {
+      localStorage.removeItem('userid');
+      alert("You have been logged out.");
+      refreshHomePage();
+    };
+
+    refreshHomePage();
+  </script>
+
+</body>
+</html>

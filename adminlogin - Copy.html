@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+    body{
+      height:100vh;display:flex;justify-content:center;align-items:center;
+      background:linear-gradient(135deg,#6a11cb,#2575fc)
+    }
+    .box{
+      width:320px;background:#fff;padding:40px;border-radius:12px;
+      box-shadow:0 10px 25px rgba(0,0,0,.2)
+    }
+    h2{text-align:center;margin-bottom:25px;color:#333}
+    input{
+      width:100%;padding:12px;margin:10px 0;border:1px solid #ccc;
+      border-radius:8px;font-size:14px
+    }
+    button{
+      width:100%;padding:12px;border:none;border-radius:8px;
+      background:#2575fc;color:#fff;font-size:16px;cursor:pointer;transition:.3s
+    }
+    button:hover{background:#1a5edb}
+    .msg{margin-top:10px;color:#e74c3c;text-align:center;font-size:14px}
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Admin Login</h2>
+    <form id="loginForm">
+      <input type="text" id="user" placeholder="type username admin" required />
+      <input type="password" id="pass" placeholder="password 12345" required />
+      <button type="submit">Login</button>
+      <p class="msg" id="error"></p>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();                         // फ़ॉर्म रीफ़्रेश रोकें
+      const u = document.getElementById('user').value.trim();
+      const p = document.getElementById('pass').value.trim();
+      if (u === 'admin' && p === '12345') {
+        window.location.href = 'admin.html';      // डैशबोर्ड पर जाएँ
+      } else {
+        document.getElementById('error').textContent = 'Invalid credentials!';
+      }
+    });
+  </script>
+
+</body>
+</html>

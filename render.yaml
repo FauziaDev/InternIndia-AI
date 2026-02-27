@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: webtask
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true 
