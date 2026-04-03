@@ -6,7 +6,7 @@ A full‑stack web platform that digitises campus life—student registration, c
 ## 🌟 Features
 
 ### For Administrators
-- **Programme Management** – add / edit B.Tech, M.Tech, etc.  
+- **Programme Management** –  B.Tech, M.Tech, etc.  
 - **Course & Semester Management** – maintain subjects, durations, descriptions  
 - **Student Management** – view, verify, update or delete student records  
 - **Service Desk** – approve hostel / library / scholarship requests  
